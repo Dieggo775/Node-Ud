@@ -2,10 +2,12 @@ const express = require('express');
 
 const server = express();
 
-server.get('/curso', (req, res) =>  {
-    
-    return res.json({ curso: 'Node.js'});
+const cursos = ['NodeJS', 'JavaScript', 'React Native'];
 
-})
+server.get('/curso/:index', (req, res) => {
+    const { index } = req.params;
 
-server.listen(3000);
+    return res.json(cursos[index])
+});
+
+server.listen(3000, () => console.log('Servidor online...'))
